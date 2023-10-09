@@ -8,6 +8,7 @@ import os
 
 env.hosts = ['3.90.84.234', '100.25.222.100']
 
+
 def do_deploy(archive_path):
     """Deploying the pack to the server."""
     if not os.path.isfile(archive_path):
@@ -21,10 +22,11 @@ def do_deploy(archive_path):
         run("rm -rf /data/web_static/releases/{}/".format(name))
         run('rm /tmp/{}'.format(archive_name))
         run("mv /data/web_static/releases/{}/web_static/* "
-                "/data/web_static/releases/{}/".format(name, name))
+            "/data/web_static/releases/{}/".format(name, name))
         run("rm -rf /data/web_static/releases/{}/web_static".format(name))
         run('rm -rf /data/web_static/current')
-        run("ln -s /data/web_static/releases/{}/ /data/web_static/current".format(name))
+        run("ln -s /data/web_static/releases/{}/ /data/web_static/current".
+            format(name))
         return True
-    except:
+    except Exception:
         return False
