@@ -81,4 +81,3 @@ class DBStorage:
             self.__session.remove()
         else:
             Session.close()
-
